@@ -1,32 +1,32 @@
 // MESSAGE ATT_POS_VEL_MOCAP PACKING
 
-#define MAVLINK_MSG_ID_ATT_POS_VEL_MOCAP 182
+#define MAVLINK_MSG_ID_ATT_POS_VEL_MOCAP 209
 
 MAVPACKED(
 typedef struct __mavlink_att_pos_vel_mocap_t {
- uint64_t time_usec; /*< Timestamp (micros since boot or Unix epoch)*/
+ uint64_t time_usec; /*< Timestamp*/
  float q[4]; /*< Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)*/
  float x; /*< X position in meters (NED)*/
  float y; /*< Y position in meters (NED)*/
  float z; /*< Z position in meters (NED)*/
- float Vx; /*< X velocity in meters (NED)*/
- float Vy; /*< Y velocity in meters (NED)*/
- float Vz; /*< Z velocity in meters (NED)*/
+ float Vx; /*< X velocity in m/s (NED)*/
+ float Vy; /*< Y velocity in m/s (NED)*/
+ float Vz; /*< Z velocity in m/s (NED)*/
 }) mavlink_att_pos_vel_mocap_t;
 
 #define MAVLINK_MSG_ID_ATT_POS_VEL_MOCAP_LEN 48
 #define MAVLINK_MSG_ID_ATT_POS_VEL_MOCAP_MIN_LEN 48
-#define MAVLINK_MSG_ID_182_LEN 48
-#define MAVLINK_MSG_ID_182_MIN_LEN 48
+#define MAVLINK_MSG_ID_209_LEN 48
+#define MAVLINK_MSG_ID_209_MIN_LEN 48
 
 #define MAVLINK_MSG_ID_ATT_POS_VEL_MOCAP_CRC 99
-#define MAVLINK_MSG_ID_182_CRC 99
+#define MAVLINK_MSG_ID_209_CRC 99
 
 #define MAVLINK_MSG_ATT_POS_VEL_MOCAP_FIELD_Q_LEN 4
 
 #if MAVLINK_COMMAND_24BIT
 #define MAVLINK_MESSAGE_INFO_ATT_POS_VEL_MOCAP { \
-	182, \
+	209, \
 	"ATT_POS_VEL_MOCAP", \
 	8, \
 	{  { "time_usec", NULL, MAVLINK_TYPE_UINT64_T, 0, 0, offsetof(mavlink_att_pos_vel_mocap_t, time_usec) }, \
@@ -61,14 +61,14 @@ typedef struct __mavlink_att_pos_vel_mocap_t {
  * @param component_id ID of this component (e.g. 200 for IMU)
  * @param msg The MAVLink message to compress the data into
  *
- * @param time_usec Timestamp (micros since boot or Unix epoch)
+ * @param time_usec Timestamp
  * @param q Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)
  * @param x X position in meters (NED)
  * @param y Y position in meters (NED)
  * @param z Z position in meters (NED)
- * @param Vx X velocity in meters (NED)
- * @param Vy Y velocity in meters (NED)
- * @param Vz Z velocity in meters (NED)
+ * @param Vx X velocity in m/s (NED)
+ * @param Vy Y velocity in m/s (NED)
+ * @param Vz Z velocity in m/s (NED)
  * @return length of the message in bytes (excluding serial stream start sign)
  */
 static inline uint16_t mavlink_msg_att_pos_vel_mocap_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
@@ -108,14 +108,14 @@ static inline uint16_t mavlink_msg_att_pos_vel_mocap_pack(uint8_t system_id, uin
  * @param component_id ID of this component (e.g. 200 for IMU)
  * @param chan The MAVLink channel this message will be sent over
  * @param msg The MAVLink message to compress the data into
- * @param time_usec Timestamp (micros since boot or Unix epoch)
+ * @param time_usec Timestamp
  * @param q Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)
  * @param x X position in meters (NED)
  * @param y Y position in meters (NED)
  * @param z Z position in meters (NED)
- * @param Vx X velocity in meters (NED)
- * @param Vy Y velocity in meters (NED)
- * @param Vz Z velocity in meters (NED)
+ * @param Vx X velocity in m/s (NED)
+ * @param Vy Y velocity in m/s (NED)
+ * @param Vz Z velocity in m/s (NED)
  * @return length of the message in bytes (excluding serial stream start sign)
  */
 static inline uint16_t mavlink_msg_att_pos_vel_mocap_pack_chan(uint8_t system_id, uint8_t component_id, uint8_t chan,
@@ -181,14 +181,14 @@ static inline uint16_t mavlink_msg_att_pos_vel_mocap_encode_chan(uint8_t system_
  * @brief Send a att_pos_vel_mocap message
  * @param chan MAVLink channel to send the message
  *
- * @param time_usec Timestamp (micros since boot or Unix epoch)
+ * @param time_usec Timestamp
  * @param q Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0)
  * @param x X position in meters (NED)
  * @param y Y position in meters (NED)
  * @param z Z position in meters (NED)
- * @param Vx X velocity in meters (NED)
- * @param Vy Y velocity in meters (NED)
- * @param Vz Z velocity in meters (NED)
+ * @param Vx X velocity in m/s (NED)
+ * @param Vy Y velocity in m/s (NED)
+ * @param Vz Z velocity in m/s (NED)
  */
 #ifdef MAVLINK_USE_CONVENIENCE_FUNCTIONS
 
@@ -277,7 +277,7 @@ static inline void mavlink_msg_att_pos_vel_mocap_send_buf(mavlink_message_t *msg
 /**
  * @brief Get field time_usec from att_pos_vel_mocap message
  *
- * @return Timestamp (micros since boot or Unix epoch)
+ * @return Timestamp
  */
 static inline uint64_t mavlink_msg_att_pos_vel_mocap_get_time_usec(const mavlink_message_t* msg)
 {
@@ -327,7 +327,7 @@ static inline float mavlink_msg_att_pos_vel_mocap_get_z(const mavlink_message_t*
 /**
  * @brief Get field Vx from att_pos_vel_mocap message
  *
- * @return X velocity in meters (NED)
+ * @return X velocity in m/s (NED)
  */
 static inline float mavlink_msg_att_pos_vel_mocap_get_Vx(const mavlink_message_t* msg)
 {
@@ -337,7 +337,7 @@ static inline float mavlink_msg_att_pos_vel_mocap_get_Vx(const mavlink_message_t
 /**
  * @brief Get field Vy from att_pos_vel_mocap message
  *
- * @return Y velocity in meters (NED)
+ * @return Y velocity in m/s (NED)
  */
 static inline float mavlink_msg_att_pos_vel_mocap_get_Vy(const mavlink_message_t* msg)
 {
@@ -347,7 +347,7 @@ static inline float mavlink_msg_att_pos_vel_mocap_get_Vy(const mavlink_message_t
 /**
  * @brief Get field Vz from att_pos_vel_mocap message
  *
- * @return Z velocity in meters (NED)
+ * @return Z velocity in m/s (NED)
  */
 static inline float mavlink_msg_att_pos_vel_mocap_get_Vz(const mavlink_message_t* msg)
 {
